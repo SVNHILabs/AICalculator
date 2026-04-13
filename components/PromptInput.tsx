@@ -26,12 +26,12 @@ export default function PromptInput({
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    if (textareaRef.current) {
+    if (textareaRef.current && !readOnly) {
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height =
         Math.max(200, textareaRef.current.scrollHeight) + 'px';
     }
-  }, [value]);
+  }, [value, readOnly]);
 
   return (
     <div className="flex flex-col h-full">
