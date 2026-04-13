@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'TokenSlim — AI Prompt Optimizer',
+  title: 'FruKal — AI Prompt Optimizer & Token Calculator',
   description:
-    'Reduce your LLM API costs by compressing prompts. Count tokens and optimize prompts with AI — free.',
-  keywords: ['token counter', 'prompt optimizer', 'LLM', 'API costs', 'GPT', 'Claude'],
+    'Reduce your LLM API costs by compressing prompts. Count tokens and optimize prompts across 25+ models — free.',
+  keywords: ['token counter', 'prompt optimizer', 'LLM', 'API costs', 'GPT', 'Claude', 'Gemini', 'DeepSeek'],
 };
 
 export default function RootLayout({

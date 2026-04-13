@@ -76,6 +76,29 @@ export default function ResultsPanel({
           readOnly
         />
         <div className="relative">
+          {/* Copy button — fixed top-right, outside the label/stats row */}
+          <button
+            onClick={handleCopy}
+            className="absolute top-0 right-0 z-10 px-3 py-1.5 bg-accent/10 hover:bg-accent/20 text-accent text-xs font-medium rounded-lg transition-all duration-200 border border-accent/20"
+          >
+            {copied ? (
+              <span className="flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <path d="M2 6l3 3 5-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Copied
+              </span>
+            ) : (
+              <span className="flex items-center gap-1">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                  <rect x="4" y="4" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1"/>
+                  <path d="M8 4V2.5A1.5 1.5 0 006.5 1h-4A1.5 1.5 0 001 2.5v4A1.5 1.5 0 002.5 8H4" stroke="currentColor" strokeWidth="1"/>
+                </svg>
+                Copy
+              </span>
+            )}
+          </button>
+
           <PromptInput
             value={optimized}
             onChange={() => {}}
@@ -84,12 +107,6 @@ export default function ResultsPanel({
             label="Optimized"
             readOnly
           />
-          <button
-            onClick={handleCopy}
-            className="absolute top-0 right-0 px-3 py-1.5 bg-accent/10 hover:bg-accent/20 text-accent text-xs font-medium rounded-lg transition-all duration-200 border border-accent/20"
-          >
-            {copied ? '✓ Copied' : 'Copy'}
-          </button>
         </div>
       </div>
     </div>

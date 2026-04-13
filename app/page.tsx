@@ -110,30 +110,30 @@ export default function Home() {
         {/* Header */}
         <header className="mb-12 sm:mb-16">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+            <div className="w-9 h-9 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
               <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
                 fill="none"
                 className="text-accent"
               >
                 <path
-                  d="M2 4h12M2 8h8M2 12h5"
+                  d="M3 5h12M3 9h8M3 13h5"
                   stroke="currentColor"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                 />
               </svg>
             </div>
-            <h1 className="text-xl font-semibold text-white tracking-tight">
-              Token<span className="text-accent">Slim</span>
+            <h1 className="text-2xl font-bold text-white tracking-tight">
+              Fru<span className="text-accent">Kal</span>
             </h1>
           </div>
           <p className="text-slate-400 text-sm max-w-lg leading-relaxed">
             Paste your prompt, pick a compression level, and get an optimized
             version that costs less to run — with token counts and savings
-            calculated instantly.
+            calculated across 25+ models instantly.
           </p>
         </header>
 
@@ -246,7 +246,9 @@ export default function Home() {
               Powered by Groq (Llama 3.3 70B) · Token counting via
               js-tiktoken (cl100k_base)
             </p>
-            <p>Free & open source</p>
+            <p>
+              Pricing updated: April 2026
+            </p>
           </div>
         </footer>
       </div>
