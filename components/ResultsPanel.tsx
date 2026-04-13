@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PromptInput from './PromptInput';
 
 interface ResultsPanelProps {
@@ -23,6 +23,24 @@ export default function ResultsPanel({
   reduction,
 }: ResultsPanelProps) {
   const [copied, setCopied] = useState(false);
+  const [textareaHeight, setTextareaHeight] = useState<number | undefined>(undefined);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const textareas = containerRef.current.querySelectorAll('textarea');
+      if (textareas.length === 2) {
+        // Reset heights to auto to measure natural scroll heights
+        textareas.forEach((ta) => (ta.style.height = 'auto'));
+        const maxHeight = Math.max(
+          200,
+          textareas[0].scrollHeight,
+          textareas[1].scrollHeight
+        );
+        setTextareaHeight(maxHeight);
+      }
+    }
+  }, [original, optimized]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(optimized);
@@ -66,7 +84,7 @@ export default function ResultsPanel({
       </div>
 
       {/* Side by side */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4 items-stretch">
+      <div ref={containerRef} className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4 items-stretch">
         <PromptInput
           value={original}
           onChange={() => {}}
@@ -74,6 +92,7 @@ export default function ResultsPanel({
           words={originalWords}
           label="Original"
           readOnly
+          fixedHeight={textareaHeight}
         />
         <PromptInput
           value={optimized}
@@ -82,6 +101,7 @@ export default function ResultsPanel({
           words={optimizedWords}
           label="Optimized"
           readOnly
+          fixedHeight={textareaHeight}
           headerAction={
             <button
               onClick={handleCopy}

@@ -11,6 +11,7 @@ interface PromptInputProps {
   readOnly?: boolean;
   placeholder?: string;
   headerAction?: React.ReactNode;
+  fixedHeight?: number;
 }
 
 export default function PromptInput({
@@ -22,16 +23,17 @@ export default function PromptInput({
   readOnly = false,
   placeholder,
   headerAction,
+  fixedHeight,
 }: PromptInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
-    if (textareaRef.current && !readOnly) {
+    if (textareaRef.current && !fixedHeight) {
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height =
         Math.max(200, textareaRef.current.scrollHeight) + 'px';
     }
-  }, [value, readOnly]);
+  }, [value, fixedHeight]);
 
   return (
     <div className="flex flex-col h-full">
@@ -67,7 +69,7 @@ export default function PromptInput({
         readOnly={readOnly}
         placeholder={placeholder}
         spellCheck={false}
-        style={{ minHeight: '200px' }}
+        style={{ minHeight: '200px', ...(fixedHeight ? { height: `${fixedHeight}px` } : {}) }}
       />
     </div>
   );
