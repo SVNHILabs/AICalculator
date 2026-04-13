@@ -10,6 +10,7 @@ interface PromptInputProps {
   label: string;
   readOnly?: boolean;
   placeholder?: string;
+  headerAction?: React.ReactNode;
 }
 
 export default function PromptInput({
@@ -20,6 +21,7 @@ export default function PromptInput({
   label,
   readOnly = false,
   placeholder,
+  headerAction,
 }: PromptInputProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -50,6 +52,7 @@ export default function PromptInput({
             </span>{' '}
             words
           </span>
+          {headerAction}
         </div>
       </div>
       <textarea
